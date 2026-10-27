@@ -1,0 +1,126 @@
+{
+  "project": {
+    "name": "Servo Motor Conjugate Heat Transfer - Air-Cooled Finned Housing",
+    "simscale_project_url": "https://www.simscale.com/workbench/?pid=8680246712396085531",
+    "analysis_type": "Conjugate heat transfer",
+    "turbulence": "k-omega SST",
+    "time_dependency": "Steady state, pseudo-time to 1000 s",
+    "runs": 2,
+    "reported_run": "Run 2 (run 14)"
+  },
+
+  "mesh": {
+    "cells": 683624,
+    "nodes": 204600,
+    "max_non_orthogonality": 76.9,
+    "max_skewness": 1.6,
+    "min_edge_mm": 0.273,
+    "n_boundary_layers": 3,
+    "generation_time_s": 30.9,
+    "mesher": "Simmetrix tetrahedral, manual sizing 20 mm / 0.8 mm",
+    "note": "single mesh; no independence study"
+  },
+
+  "fluid_properties": {
+    "name": "Air (SimScale incompressible preset)",
+    "rho_kg_m3": 1.1965,
+    "cp_J_kgK": 1004.0,
+    "nu_m2_s": 1.5295e-05,
+    "mu_Pa_s": 1.83005e-05,
+    "prandtl": 0.713,
+    "k_W_mK": 0.025770,
+    "beta_1_K": 0.00343,
+    "note": "k is not stored for an incompressible fluid; it follows from mu*cp/Pr = 0.025770 W/mK. mu = nu*rho."
+  },
+
+  "solid_properties": {
+    "aluminium": {
+      "k_W_mK": 235.0,
+      "cp_J_kgK": 897.0,
+      "rho_kg_m3": 2700.0
+    },
+    "copper": {
+      "k_W_mK": 401.0,
+      "cp_J_kgK": 385.0,
+      "rho_kg_m3": 8960.0
+    }
+  },
+
+  "boundary_conditions": {
+    "inlet_velocity_m_s": 3.0,
+    "inlet_area_m2": 0.09,
+    "inlet_temperature_K": 298.15,
+    "outlet_pressure_gauge_Pa": 0.0,
+    "lateral_walls": "slip, adiabatic",
+    "power_W": 80.0,
+    "gravity_m_s2": -9.81,
+    "radiation": false
+  },
+
+  "result_controls": {
+    "note": "Area averages on the inlet and outlet faces, read from the results API at the final iteration.",
+    "inlet_T_K": 298.15,
+    "outlet_T_K": 298.4615954832,
+    "inlet_Ux_m_s": 3.0,
+    "outlet_Ux_m_s": 3.000036153032,
+    "outlet_Uy_m_s": -3.353903677904e-05,
+    "outlet_Uz_m_s": 5.135902695449e-05,
+    "inlet_p_Pa": 2.143365642407,
+    "outlet_p_Pa": 1.901477265759,
+    "inlet_p_rgh_Pa": 0.2398655749404,
+    "outlet_p_rgh_Pa": 0.0,
+    "dp_p_rgh_Pa": 0.2398655749404,
+    "inlet_k_m2_s2": 0.03375,
+    "outlet_k_m2_s2": 0.02899527251106,
+    "inlet_omega_1_s": 15.971914125,
+    "outlet_omega_1_s": 22.53190306142,
+    "inlet_nut_m2_s": 0.002110266349008,
+    "outlet_nut_m2_s": 0.001738434983517
+  },
+
+  "solid_fields": {
+    "note": "Cell-centre temperature statistics of the converged solid fields, recovered from the result archive (1000/regionN/T.gz). The solids carry only T. region2 has 66 boundary patches and region3 has 3, which matches the housing and winding CAD face counts exactly.",
+    "housing": {
+      "region": "region2",
+      "n_cells": 62119,
+      "n_boundary_patches": 66,
+      "mean_K": 352.45836746342746,
+      "min_K": 350.239919343,
+      "max_K": 353.038748528,
+      "sd_K": 0.5004236002414566,
+      "p01_K": 350.632322506,
+      "p50_K": 352.450655311,
+      "p99_K": 352.990459544
+    },
+    "winding": {
+      "region": "region3",
+      "n_cells": 25545,
+      "n_boundary_patches": 3,
+      "mean_K": 352.7264997186725,
+      "min_K": 352.217208403,
+      "max_K": 353.08299458,
+      "sd_K": 0.28979760244079583,
+      "p01_K": 352.252981607,
+      "p50_K": 352.898189268,
+      "p99_K": 353.068373395
+    }
+  },
+
+  "convergence": {
+    "iterations": 1000,
+    "final_residuals": {
+      "Ux": 1.51445919314e-06,
+      "Uy": 1.91873725198e-05,
+      "Uz": 1.57479231476e-05,
+      "k": 2.51935557277e-05,
+      "omega": 4.8033955562e-08,
+      "p_rgh": 3.47289842682e-04,
+      "T": 1.50728430746e-06
+    },
+    "monitor_drift_K": 1.7e-05,
+    "monitor_drift_window": "iterations 961-1000",
+    "note": "see results/convergence.json for the downsampled histories"
+  },
+
+  "provenance": "Fluid monitors: area-average result controls on the inlet and outlet faces, read from the SimScale results API at the final iteration of Run 2 (result 8ce326bb-b300-4314-a843-1ea0caf79e92). Solid temperatures: the result archive (result.zip, OpenFOAM ASCII fields per region) was streamed and the entries 1000/region2/T.gz and 1000/region3/T.gz decompressed and parsed; statistics are over cell-centre values. The two solid surface-data result controls produced no plots in this solver version, so no surface-averaged solid values exist."
+}

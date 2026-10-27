@@ -1,0 +1,9 @@
+# Normalise line endings in the repository (LF), regardless of the OS that
+# clones it. Without this, Windows CRLF conversion makes every text file look
+# modified on the first checkout.
+* text=auto eol=lf
+
+# Binary artefacts: never touch these.
+*.png binary
+*.stl binary
+*.pdf binary

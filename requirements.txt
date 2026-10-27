@@ -1,0 +1,23 @@
+# Geometry generation + analysis pipeline.
+# The CFD itself runs on SimScale; nothing here solves flow.
+#
+#   python -m pip install -r requirements.txt
+
+numpy>=1.26
+scipy>=1.11
+trimesh>=4.0
+shapely>=2.0
+matplotlib>=3.8
+pandas>=2.0
+
+# trimesh needs these two for boolean CSG and for polygon containment.
+# Without them the geometry script either raises or silently falls back to a
+# slow/fragile path, so they are pinned as hard requirements.
+manifold3d>=2.3
+rtree>=1.1
+
+# The three solids are exported as a multi-solid STEP, and only an exact B-rep
+# kernel can do that: a single STL fuses the winding to the housing wherever
+# they touch. gmsh is used purely as an OpenCASCADE wrapper here -- it is not
+# used to mesh anything for the CFD run.
+gmsh>=4.12

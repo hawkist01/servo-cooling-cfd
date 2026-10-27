@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Scratch
+*.bak
+*.tmp
+~$*
+
+# NOTE: figures/, docs/report.md, docs/dashboard.html and
+# results/summary.json are deliberately NOT ignored.
+# They are generated, but they are the deliverable: the report and the
+# figures are what the project exists to produce, and committing them means
+# the repository is readable without running anything.

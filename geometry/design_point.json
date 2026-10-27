@@ -1,0 +1,130 @@
+{
+  "parts": {
+    "winding": {
+      "material": "copper",
+      "volume_mL": 237.76075255535824,
+      "area_m2": 0.022540526433635293,
+      "bounds_m": [
+        [
+          -0.056,
+          -0.026,
+          -0.026000000000000002
+        ],
+        [
+          0.056,
+          0.026,
+          0.026000000000000002
+        ]
+      ],
+      "n_faces": 512
+    },
+    "housing": {
+      "material": "aluminium",
+      "volume_mL": 155.43915872889002,
+      "area_m2": 0.07957450237309024,
+      "bounds_m": [
+        [
+          -0.057999998331069946,
+          -0.041999999433755875,
+          -0.041999999433755875
+        ],
+        [
+          0.057999998331069946,
+          0.041999999433755875,
+          0.041999999433755875
+        ]
+      ],
+      "n_faces": 1264
+    },
+    "air": {
+      "material": "air",
+      "volume_mL": 53606.803836666935,
+      "area_m2": 0.957034011148659,
+      "bounds_m": [
+        [
+          -0.15000000596046448,
+          -0.15000000596046448,
+          -0.15000000596046448
+        ],
+        [
+          0.44999998807907104,
+          0.15000000596046448,
+          0.15000000596046448
+        ]
+      ],
+      "n_faces": 764
+    },
+    "motor": {
+      "volume_mL": 393.19991128424823,
+      "note": "housing + winding, reported separately; not unioned"
+    },
+    "assembly": {
+      "file": "motor_assembly.step",
+      "n_solids": 3,
+      "x_extent_m": 0.6,
+      "volumes_mL": {
+        "winding": 237.86,
+        "housing": 155.48,
+        "air": 53606.66
+      },
+      "note": "three independent B-rep solids in one STEP, because a CHT simulation takes a single geometry and the winding/housing interface is a shared face that an STL cannot keep separate"
+    }
+  },
+  "geometry": {
+    "winding_radius_m": 0.026,
+    "winding_length_m": 0.112,
+    "housing_outer_radius_m": 0.032,
+    "fin_tip_radius_m": 0.042,
+    "fin_height_m": 0.010000000000000002,
+    "fin_thickness_m": 0.0015,
+    "n_fins": 12,
+    "housing_length_m": 0.116,
+    "end_wall_thickness_m": 0.002,
+    "interface_area_m2": 0.022544068882160356,
+    "housing_wetted_area_m2": 0.057030433490929885,
+    "winding_exposed_area_m2": 0.0,
+    "total_wetted_area_m2": 0.057030433490929885,
+    "fin_area_m2": 0.028896000000000012,
+    "air_domain_m3": 0.054
+  },
+  "operating_point": {
+    "heat_load_W": 80.0,
+    "heat_source_W_m3": 336472.69004741847,
+    "inlet_temperature_K": 298.15,
+    "inlet_velocity_m_s": 3.0,
+    "copper": {
+      "k": 385.0,
+      "rho": 8933.0,
+      "cp": 385.0
+    },
+    "aluminium": {
+      "k": 202.0,
+      "rho": 2700.0,
+      "cp": 900.0
+    },
+    "air": {
+      "k": 0.0261,
+      "rho": 1.18,
+      "cp": 1005.0,
+      "mu": 1.85e-05,
+      "nu": 1.5677966101694916e-05,
+      "pr": 0.7123563218390804
+    }
+  },
+  "prediction": {
+    "re_length": 21431.35135135135,
+    "nusselt_flat_plate": 96.3696903147339,
+    "h_W_m2K": 22.4575796179871,
+    "fin_parameter_m": 12.175173467495698,
+    "fin_efficiency": 0.9950879617234094,
+    "effective_area_m2": 0.056888495232889524,
+    "convective_resistance_K_W": 0.7827311284568816,
+    "wall_conduction_resistance_K_W": 0.0014606979881947846,
+    "housing_over_air_K": 62.61849027655053,
+    "predicted_housing_temperature_K": 360.7684902765505,
+    "predicted_bore_temperature_K": 360.8853461156061,
+    "winding_internal_drop_K": 0.14769840160523043,
+    "air_bulk_rise_K": 0.24984930963512633,
+    "note": "h from a turbulent flat-plate correlation over the motor length, not Churchill-Bernstein: the flow is axial, not crossflow. The lumped resistance assumes the housing is isothermal, which it is not; it is a scale check, not a prediction of T_max. The winding is enclosed, so all 80 W must cross the air-side resistance; wall conduction is included as a separate term."
+  }
+}
