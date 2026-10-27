@@ -136,7 +136,7 @@ def fig_validation(d: dict) -> None:
         ax.text(b.get_x() + b.get_width() / 2, v, f"{v:.1f}", ha="center",
                 va="bottom", fontsize=10)
     ax.set_ylabel("wetted surface - inlet air [K]")
-    ax.set_title(f"Surface superheat   {m['housing_vs_prediction_pct']:+.1f} %",
+    ax.set_title(f"Wetted surface over inlet air   {m['housing_vs_prediction_pct']:+.1f} %",
                  fontsize=10.5)
     ax.set_ylim(0, max(vals) * 1.24)
     style(ax)

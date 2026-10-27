@@ -14,6 +14,7 @@ Formatting is applied by suffix convention:
     {{measured.h_effective_W_m2K|pct}}    signed percentage, one decimal
     {{measured.h_effective_W_m2K|K}}      kelvin -> degrees Celsius
     {{mesh.cells|num}}                    thousands separators
+    {{measured.mass_conservation_err_pct|e}}   scientific notation
 
 Usage
 -----
